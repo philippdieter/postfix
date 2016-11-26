@@ -31,6 +31,7 @@ class postfix::config (
   $proxy_read_maps                      = undef,
   $local_recipient_maps                 = undef,
   $receive_override_options             = undef,
+  $recipient_canonical_maps             = undef,
   $show_user_unknown_table_name         = undef,
   $smtpd_banner                         = undef,
   $smtpd_data_restrictions              = undef,
@@ -41,6 +42,7 @@ class postfix::config (
   $smtpd_sasl_local_domain              = undef,
   $smtpd_sasl_security_options          = undef,
   $smtpd_sender_restrictions            = undef,
+  $smtpd_sender_login_maps              = undef,
   $smtpd_sasl_type                      = undef,
   $smtpd_sasl_path                      = undef,
   $smtpd_tls_auth_only                  = undef,
@@ -135,6 +137,8 @@ class postfix::config (
 
   postfix::config::maincfhelper { 'receive_override_options': value => $receive_override_options }
 
+  postfix::config::maincfhelper { 'recipient_canonical_maps': value => $recipient_canonical_maps }
+
   postfix::config::maincfhelper { 'show_user_unknown_table_name': value => $show_user_unknown_table_name }
 
   postfix::config::maincfhelper { 'smtpd_banner': value => $smtpd_banner }
@@ -154,6 +158,8 @@ class postfix::config (
   postfix::config::maincfhelper { 'smtpd_sasl_security_options': value => $smtpd_sasl_security_options }
 
   postfix::config::maincfhelper { 'smtpd_sender_restrictions': value => $smtpd_sender_restrictions }
+
+  postfix::config::maincfhelper { 'smtpd_sender_login_maps': value => $smtpd_sender_login_maps }
 
   postfix::config::maincfhelper { 'smtpd_tls_auth_only': value => $smtpd_tls_auth_only }
 
