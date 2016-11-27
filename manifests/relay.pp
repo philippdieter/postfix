@@ -12,6 +12,7 @@
 class postfix::relay (
   $relayhost = undef,
   $masquerade_domains = $::hostname,
+  $sender_canonical_maps = undef,
   $sender_hostname = $::fqdn,
   $smtp_sasl_auth_enable = undef,
   $smtp_sasl_password_maps = undef,
@@ -32,6 +33,8 @@ class postfix::relay (
   postfix::config::maincfhelper { 'mydestination': value => "${sender_hostname}, ${::hostname}, localhost.localdomain, localhost", }
 
   postfix::config::maincfhelper { 'relayhost': value => $relayhost, }
+
+  postfix::config::maincfhelper { 'sender_canonical_maps': value => $sender_canonical_maps }
 
   postfix::config::maincfhelper { 'smtp_sasl_auth_enable': value => $smtp_sasl_auth_enable }
 
